@@ -1,24 +1,16 @@
 class ShortLinksController < ApplicationController
-  before_action :set_short_link, only: [:show, :edit, :update, :destroy]
 
   # GET /short_links
   # GET /short_links.json
   def index
     @short_links = ShortLink.all
-  end
-
-  # GET /short_links/1
-  # GET /short_links/1.json
-  def show
-  end
-
-  # GET /short_links/new
-  def new
     @short_link = ShortLink.new
   end
 
-  # GET /short_links/1/edit
-  def edit
+  def show
+    @short_url = ShortLink.find(params[:slug])
+    @short_url.update_attributes!(visited: @short_url.visited + 1)
+    redirect_to "http://#{@short_url.destination}", status: 302
   end
 
   # POST /short_links

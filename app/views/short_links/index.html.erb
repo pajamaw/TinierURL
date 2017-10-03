@@ -2,6 +2,10 @@
 
 <h1>Short Links</h1>
 
+<h1>New Short Link</h1>
+
+<%= render 'form', short_link: @short_link %>
+
 <table>
   <thead>
     <tr>
@@ -19,13 +23,9 @@
         <td><%= short_link.visited %></td>
         <td><%= short_link.destination %></td>
         <td><%= link_to 'Show', short_link %></td>
-        <td><%= link_to 'Edit', edit_short_link_path(short_link) %></td>
-        <td><%= link_to 'Destroy', short_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Short Link', new_short_link_path %>
