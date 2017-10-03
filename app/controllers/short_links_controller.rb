@@ -7,10 +7,8 @@ class ShortLinksController < ApplicationController
 
   def show
     @short_url = ShortLink.find(params[:slug])
-    puts "#{@short_url}"
-    #for some reason it's counting twice
+    #for some reason it's doubling requests twice
     @short_url.update_attributes!(visited: @short_url.visited + 1)
-    puts "#{@short_url}"
 
     redirect_to "http://#{@short_url.destination}", status: 302
   end
