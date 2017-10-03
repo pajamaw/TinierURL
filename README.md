@@ -27,10 +27,10 @@
   - method to create the shortenedlink create/post
     - ensure fair amount of additionals
     - ensure that it's not a duplicate
+      - actually can't really check that
     - base64 encoding looks pretty good
   - method to go to the link get/show
-  - displaying and
-
+  - Let's build a quick Scraper to get a list of websites to use from https://moz.com/top500
 
 
 
