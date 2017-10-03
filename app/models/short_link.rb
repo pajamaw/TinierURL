@@ -1,9 +1,9 @@
 class ShortLink
   include Cequel::Record
-
+  attr_accessor :destination, :visited
   key :slug, :text
-  column :destintation, :text
-  column :times_visited, :int
+  column :destination, :text
+  column :visited, :int
 
   timestamps
 end
