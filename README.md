@@ -2,11 +2,28 @@
 
 ### Rough roadmap
   - Tech?
-    - Rails 5
-    - DB? - Cassandra
-      - haven't used it before but don't really need a relational database here -
-      - and the fast read/write will be good
+    - Rails 5 let's make it REST
+    - DB? - Postgres vs **Cassandra**
+      - PG would be easy to use here and would be good for showing the top 100 sites
+      - haven't used Cassandra before  
+      - but the fast read/write will be good
+      - look into how to connect it to heroku
+        - instaclustr https://devcenter.heroku.com/articles/instaclustr
     - An easy vanilla job here would probably be fine
+    - Testing with Cassandra?
+
+#### Backend
+  - Model for the ShortenedLink
+  - method to create the shortenedlink create/post
+    - ensure fair amount of additionals
+    - ensure that it's not a duplicate
+  - method to go to the link get/show
+  - displaying and
+
+
+
+
+
 ### Things that I want to do with this project
   - Have an input on home page that upon submission returns a url of the shortest possible length
     * what's the shortest possible length?

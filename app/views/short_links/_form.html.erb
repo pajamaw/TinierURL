@@ -1,0 +1,32 @@
+<%= form_with(model: short_link, local: true) do |form| %>
+  <% if short_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(short_link.errors.count, "error") %> prohibited this short_link from being saved:</h2>
+
+      <ul>
+      <% short_link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, id: :short_link_slug %>
+  </div>
+
+  <div class="field">
+    <%= form.label :visited %>
+    <%= form.text_field :visited, id: :short_link_visited %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destination %>
+    <%= form.text_field :destination, id: :short_link_destination %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
