@@ -1,7 +1,5 @@
 class ShortLinksController < ApplicationController
 
-  # GET /short_links
-  # GET /short_links.json
   def index
     @short_links = ShortLink.all
     @short_link = ShortLink.new
@@ -9,22 +7,23 @@ class ShortLinksController < ApplicationController
 
   def show
     @short_url = ShortLink.find(params[:slug])
+    puts "#{@short_url}"
+    #for some reason it's counting twice
     @short_url.update_attributes!(visited: @short_url.visited + 1)
+    puts "#{@short_url}"
+
     redirect_to "http://#{@short_url.destination}", status: 302
   end
 
-  # POST /short_links
-  # POST /short_links.json
   def create
-    @short_link = ShortLink.new(short_link_params)
-
+    slug = ShortLink.base_conversion_to_slug(ShortLink.current_id)
+    @short_link = ShortLink.new(short_link_params.merge({slug:slug, visited:0, id: ShortLink.current_id}))
     respond_to do |format|
       if @short_link.save
-        format.html { redirect_to @short_link, notice: 'Short link was successfully created.' }
-        format.json { render :show, status: :created, location: @short_link }
+        ShortLink.increment
+        format.html { redirect_to root_path, notice: 'Short link was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @short_link.errors, status: :unprocessable_entity }
+        format.html { redirect_to root }
       end
     end
   end
@@ -55,12 +54,9 @@ class ShortLinksController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_short_link
-      @short_link = ShortLink.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def short_link_params
-      params.require(:short_link).permit(:slug, :visited, :destination)
+      params.require(:short_link).permit(:destination)
     end
 end

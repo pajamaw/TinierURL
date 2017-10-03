@@ -5,6 +5,8 @@
     - Rails 5 let's make it REST
     - DB? - Postgres vs **Cassandra**
       - PG would be easy to use here and would be good for showing the top 100 sites
+      - then i could also allow users to create their own link easily
+        - but is that necessary?
       - haven't used Cassandra before  
       - but the fast read/write will be good
       - look into how to connect it to heroku
@@ -14,9 +16,18 @@
 
 #### Backend
   - Model for the ShortenedLink
+    - number of times visited
+    - timestamps
+    - original destintation
+    - slug
+    - id -> this will be a class method that I can call so upon reaching teh create
+      - I'll auto increment the id and encode the number using a base conversion alg
+      - then i'll feed that into the model
+      - if it doesn't persist then I won't increment
   - method to create the shortenedlink create/post
     - ensure fair amount of additionals
     - ensure that it's not a duplicate
+    - base64 encoding looks pretty good
   - method to go to the link get/show
   - displaying and
 
