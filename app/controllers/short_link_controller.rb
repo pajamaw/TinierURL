@@ -5,14 +5,18 @@ class ShortLinkController < ApplicationController
   end
 
   def show
-    @short_url = ShortLink.find_by(slug: params[:slug])
+    if !@short_url = ShortLink.find_by(slug: params[:slug])
+      redirect_to root_path, notice: "Path not found"
+    end
     #for some reason it's doubling requests
-    @short_url.update(visited: @short_url.visited + 1)
+    @short_url.visited += 1
+    @short_url.save
     redirect_to "http://#{@short_url.destination}", status: 302
   end
 
   def create
-    @short_link = ShortLink.find_by(destination: params[:short_link][:destination]) || ShortLink.create(short_link_params)
+    # params[:short_link][:destination].parse_https
+    @short_link = ShortLink.find_by(short_link_params) || ShortLink.create(short_link_params)
     respond_to do |format|
       if @short_link.save
         format.html { redirect_to root_path, notice: "#{request.original_url.slice(0..-3) + @short_link.slug}"}

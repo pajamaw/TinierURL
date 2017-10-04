@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171003235024) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "short_links", force: :cascade do |t|
+  create_table "short_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.text "slug"
     t.text "destination"
     t.integer "visited", default: 0

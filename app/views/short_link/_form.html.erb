@@ -14,7 +14,7 @@
   <div class="field p-2">
     <%= form.label :destination, :class => "sr-only" %>
     <!-- make this a required field with a valid url with javascript -->
-    <%= form.text_field :destination, id: :short_link_destination, class: 'form-control mb-2 mr-sm-2 mb-sm-0', placeholder: "www.example.com"%>
+    <%= form.text_field :destination, id: :short_link_destination, class: 'form-control mb-2 mr-sm-2 mb-sm-0', required: true, placeholder: "www.example.com"%>
   </div>
 
   <div class="actions p-2">
