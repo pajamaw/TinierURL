@@ -2,20 +2,28 @@
 ## To run
   - go to https://apoco.herokuapp.com
 
+# Overview
+  - Shortest possible lengths - we'll convert the id's of the links into a custom base 66 conversion, that will slowly increment the lenght of the url's
+    - should probably consider removing some of the characters that look alike
+
+  - Want the top 100 visited displayed
+    - Cache these?
+  - 
+
+
 ### Rough roadmap
   - Tech?
     - Rails 5 let's make it REST
     - DB? - Postgres vs **Cassandra**
-      - Actually let's swap out with mysql
+      - Actually let's swap out with **mysql**
       - PG would be easy to use here and would be good for showing the top 100 sites
       - then i could also allow users to create their own link easily
         - but is that necessary?
       - haven't used Cassandra before  
-      - but the fast read/write will be good
+      - but the fast read will be good
       - look into how to connect it to heroku
         - instaclustr https://devcenter.heroku.com/articles/instaclustr
     - An easy vanilla job here would probably be fine
-    - Testing with Cassandra?
 
 #### Backend
   - Model for the ShortenedLink
@@ -24,14 +32,17 @@
     - original destintation
     - slug
     - id -> this will be a class method that I can call so upon reaching teh create
-      - I'll auto increment the id and encode the number using a base conversion alg
-      - then i'll feed that into the model
-      - if it doesn't persist then I won't increment
+      - for cassandra
+        - I'll auto increment the id and encode the number using a base conversion alg
+        - then i'll feed that into the model
+        - if it doesn't persist then I won't increment
+      - for mysql
+        -
   - method to create the shortenedlink create/post
     - ensure fair amount of additionals
-    - ensure that it's not a duplicate
       - actually can't really check that
     - base64 encoding looks pretty good
+      - let's add a couple and use 66
   - method to go to the link get/show
   - Let's build a quick Scraper to get a list of websites to use from https://moz.com/top500
 

@@ -2,11 +2,9 @@
 
 <h1>Short Links</h1>
 
-<h1>New Short Link</h1>
-
 <%= render 'form', short_link: @short_link %>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Visited</th>
@@ -20,7 +18,7 @@
       <tr>
         <td><%= short_link.visited %></td>
         <td><%= short_link.destination %></td>
-        <td><%= link_to 'Show', "/#{short_link.slug}" %></td>
+        <td><%= button_to('Show', "/#{short_link.slug}", :class=> "btn btn-primary") %></td>
       </tr>
     <% end %>
   </tbody>
