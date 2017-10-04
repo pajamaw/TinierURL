@@ -9,19 +9,16 @@ RSpec.feature "tiny url creation", :type => :feature do
   end
   scenario "User gets a previously made tiny url if the destination already exists" do
     visit "/"
-    s = ShortLink.create(destination: "www.miniwebtool.com/random-name-picker/")
+    # first time time
+    s = ShortLink.create(destination: "www.miniwebtool.com/random-name-picker/", visited: 10004)
     fill_in "Destination", :with => "www.miniwebtool.com/random-name-picker/"
     click_button "Create Short link"
 
-    expect(page).to have_css("tr", :count => 2)
+    expect(page).to have_text("miniwebtool", :count => 1)
   end
-  scenario "User gets a previously made tiny url if the destination already exists" do
-    visit "/"
-    s = ShortLink.create(destination: "www.miniwebtool.com/random-name-picker/")
-    fill_in "Destination", :with => "www.miniwebtool.com/random-name-picker/"
-    click_button "Create Short link"
+  scenario "User gets redirected for an invalid slug" do
+    visit "/akjasdfds"
 
-    expect(page).to have_css("tr", :count => 2)
+    expect(page.current_path).to eq("/")
   end
-
 end

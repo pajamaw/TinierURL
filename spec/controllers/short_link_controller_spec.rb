@@ -1,7 +1,5 @@
 RSpec.describe ShortLinkController do
-  if !ShortLink.first
-    load "#{Rails.root}/db/seeds.rb"
-  end
+
   describe "Get index" do
     it "grabs the top 100 links" do
       get :index

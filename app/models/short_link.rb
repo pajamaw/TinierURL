@@ -1,4 +1,6 @@
 class ShortLink < ApplicationRecord
+  default_scope { order("#{self.table_name}.visited DESC") } 
+
   validates :destination, presence: true
   ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!."
   BASE = ALPHABET_MAP.length
