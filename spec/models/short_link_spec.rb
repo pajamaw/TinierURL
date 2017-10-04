@@ -25,4 +25,21 @@ RSpec.describe ShortLink do
     # instance's slug but altered by a capitalized letter
     expect(ShortLink.find_by(slug: s2.slug)).to eq(s2)
   end
+  describe "#base_conversion_to_slug" do
+    it "will create a smaller string with a custom base 66 mapping based upon the id" do
+      s1 = ShortLink.create(destination: "www.anything.com")
+      s1.base_conversion_to_slug
+      s1.save
+      expect(s1.slug.length).to be < (s1.destination.length)
+    end
+  end
+  describe "#base_conversion_to_slug" do
+    it "contain reasonably map 1 trillion entries and still be under 8 characters" do
+      s1 = ShortLink.create(id: 1000000000000, destination: "www.anything.com")
+      s1.base_conversion_to_slug
+      s1.save
+      expect(s1.slug.length).to be < (8)
+      ShortLink.find(1000000000000).delete
+    end
+  end
 end
