@@ -6,9 +6,8 @@ class ShortLinkController < ApplicationController
 
   def show
     @short_url = ShortLink.find_by(slug: params[:slug])
-    #for some reason it's doubling requests twice
+    #for some reason it's doubling requests
     @short_url.update(visited: @short_url.visited + 1)
-
     redirect_to "http://#{@short_url.destination}", status: 302
   end
 
@@ -23,22 +22,6 @@ class ShortLinkController < ApplicationController
     end
   end
 
-  # PATCH/PUT /short_links/1
-  # PATCH/PUT /short_links/1.json
-  def update
-    respond_to do |format|
-      if @short_link.update(short_link_params)
-        format.html { redirect_to @short_link, notice: 'Short link was successfully updated.' }
-        format.json { render :show, status: :ok, location: @short_link }
-      else
-        format.html { render :edit }
-        format.json { render json: @short_link.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /short_links/1
-  # DELETE /short_links/1.json
   def destroy
     @short_link.destroy
     respond_to do |format|

@@ -1,8 +1,8 @@
 class ShortLink < ApplicationRecord
 
-  ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_!."
+  ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!."
   BASE = ALPHABET_MAP.length
-
+  # base 66 
   after_create do
     self.slug = self.base_conversion_to_slug
     self.save
