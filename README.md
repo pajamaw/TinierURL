@@ -1,4 +1,6 @@
 # TinierUrl
+## To run
+  - go to https://apoco.herokuapp.com
 
 ### Rough roadmap
   - Tech?
