@@ -5,10 +5,14 @@
 # Overview
   - Shortest possible lengths - we'll convert the id's of the links into a custom base 66 conversion, that will slowly increment the lenght of the url's
     - should probably consider removing some of the characters that look alike
-
+  - display generated url after creation
   - Want the top 100 visited displayed
     - Cache these?
-  - 
+    - so rails actually caches the results of database calls
+    - issue is is that the cache is deleted upon a create or an update - so after another's created there's really no point
+  - Add some bootstrap to make it a little prettier
+  - maybe add a little javascript to check if valid websites
+
 
 
 ### Rough roadmap
@@ -47,19 +51,16 @@
   - Let's build a quick Scraper to get a list of websites to use from https://moz.com/top500
 
 
-
-
 ### Things that I want to do with this project
   - Have an input on home page that upon submission returns a url of the shortest possible length
     * what's the shortest possible length?
       * what's the use case how many possibilities do we need here
       *  `n^l` usable characters and l positions would equate to the number that are needed
       * bitly uses 7
+      * they're also only at
   - redirected to the full URL when we enter the short url
     * maybe clickable into a new tab as well?
   - Top 100 board with the most frequented sites
     * that means that each model will have to have a count of number of times visited
-    * Should I include that upon the homepage?
-      - Probably as otherwise I'd use up a possible combination
   - Deploy it
   - Prepopulate it with some fake urls to provide smoke and mirrors so people think it's in use
