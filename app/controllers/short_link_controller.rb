@@ -12,10 +12,10 @@ class ShortLinkController < ApplicationController
   end
 
   def create
-    @short_link = ShortLink.create(short_link_params)
+    @short_link = ShortLink.find_by(destination: params[:short_link][:destination]) || ShortLink.create(short_link_params)
     respond_to do |format|
       if @short_link.save
-        format.html { redirect_to root_path, notice: "#{request.original_url + @short_link.slug}"}
+        format.html { redirect_to root_path, notice: "#{request.original_url.slice(0..-3) + @short_link.slug}"}
       else
         format.html { redirect_to root }
       end

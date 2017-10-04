@@ -10,8 +10,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Visited</th>
+      <th># of Visitors</th>
       <th>Destination</th>
+      <th>TinierURL</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,8 +21,8 @@
     <% @short_links.each do |short_link| %>
       <tr>
         <td><%= short_link.visited %></td>
-        <td><%= short_link.destination %></td>
-        <td><%= button_to 'Show', { action: "show", slug: short_link.slug}, method: "get", :class=> "btn btn-primary" %></td>
+        <td><a href=<%=short_link.destination%>><%= short_link.destination %></a></td>
+        <td><a href=<%=short_link.slug%>><%= request.original_url + short_link.slug %></a></td>
       </tr>
     <% end %>
   </tbody>
