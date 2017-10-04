@@ -1,33 +1,37 @@
+    <h1 class="text-center">Tinify-ing Everything</h1>
+    <h3></h3>
+    <%= render 'form', short_link: @short_link %>
 
-<h1 class="text-center">Tinifing Everything</h1>
+    <% if notice %>
+      <div class="alert-info text-center border">
+        <h4 class="alert-heading">Link Successfully Tinified!</h4>
+        <p id="notice"><a href="<%=notice%>"class="alert-link"><%= notice %> </a></p>
+      </div>
+    <%end %>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th colspan="4">Top 100 Most Visited Sites</th>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>Ranking</th>
+            <th># of Visitors</th>
+            <th>Destination</th>
+            <th>TinierURL</th>
+          </tr>
+        </thead>
 
-<%= render 'form', short_link: @short_link %>
-
-<% if notice %>
-  <div class="alert-info text-center border">
-    <h4 class="alert-heading">Link Successfully Tinified!</h4>
-    <p id="notice"><a href="<%=notice%>"class="alert-link"><%= notice %> </a></p>
-  </div>
-<%end %>
-
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th># of Visitors</th>
-      <th>Destination</th>
-      <th>TinierURL</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @short_links.each do |short_link| %>
-      <tr>
-        <td><%= short_link.visited %></td>
-        <td><a href="http://<%=short_link.destination%>"><%= short_link.destination %></a></td>
-        <td><a href=<%=short_link.slug%>><%= request.original_url + short_link.slug %></a></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+        <tbody>
+          <% @short_links.each.with_index do |short_link, i| %>
+            <tr class="sticky">
+              <td><%= i+1 %></td>
+              <td><%= short_link.visited %></td>
+              <td><a href="http://<%=short_link.destination%>"><%= short_link.destination %></a></td>
+              <td><a href=<%=short_link.slug%>><%= request.original_url + short_link.slug %></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <br>

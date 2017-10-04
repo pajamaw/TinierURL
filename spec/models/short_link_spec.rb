@@ -42,4 +42,17 @@ RSpec.describe ShortLink do
       ShortLink.find(1000000000000).delete
     end
   end
+  describe "#validate_uri" do
+    it "it will prevent non valid destinations from being created" do
+      s1 = ShortLink.create(destination: "ww thing.com")
+      expect(s1.valid?).to be(false)
+
+    end
+  end
+  describe "#validate_uri" do
+    it "it will allow valid structured url" do
+      s1 = ShortLink.create(destination: "www.t.com")
+      expect(s1.valid?).to be(true)
+    end
+  end
 end
