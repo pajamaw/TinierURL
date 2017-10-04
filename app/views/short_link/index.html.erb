@@ -22,7 +22,7 @@
         <td><%= short_link.slug %></td>
         <td><%= short_link.visited %></td>
         <td><%= short_link.destination %></td>
-        <td><%= link_to 'Show', short_link %></td>
+        <td><%= link_to 'Show', "/#{short_link.slug}" %></td>
       </tr>
     <% end %>
   </tbody>

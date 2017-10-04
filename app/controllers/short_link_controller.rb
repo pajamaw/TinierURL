@@ -1,11 +1,11 @@
 class ShortLinkController < ApplicationController
   def index
-    @short_links = ShortLink.all
+    @short_links = ShortLink.all.sort_by(&:visited).reverse.take(100)
     @short_link = ShortLink.new
   end
 
   def show
-    @short_url = ShortLink.find(slug: params[:slug])
+    @short_url = ShortLink.find_by(slug: params[:slug])
     #for some reason it's doubling requests twice
     @short_url.update(visited: @short_url.visited + 1)
 
