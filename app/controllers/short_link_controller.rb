@@ -15,7 +15,7 @@ class ShortLinkController < ApplicationController
     @short_link = ShortLink.create(short_link_params)
     respond_to do |format|
       if @short_link.save
-        format.html { redirect_to root_path, notice: 'Short link was successfully created.' }
+        format.html { redirect_to root_path, notice: "#{request.original_url + @short_link.slug}"}
       else
         format.html { redirect_to root }
       end
