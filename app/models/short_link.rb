@@ -1,5 +1,5 @@
 class ShortLink < ApplicationRecord
-
+  validates :destination, presence: true
   ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!."
   BASE = ALPHABET_MAP.length
   # base 66
@@ -11,10 +11,9 @@ class ShortLink < ApplicationRecord
     self.slug = self.base_conversion_to_slug
     self.save
   end
-  
+
   def base_conversion_to_slug
     int = self.id
-    puts "#{self.attributes}"
     slug = ""
     while int > 0 do
       slug += ALPHABET_MAP[int % BASE]
