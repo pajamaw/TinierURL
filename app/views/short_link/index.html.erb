@@ -9,7 +9,6 @@
 <table>
   <thead>
     <tr>
-      <th>Slug</th>
       <th>Visited</th>
       <th>Destination</th>
       <th colspan="3"></th>
@@ -19,7 +18,6 @@
   <tbody>
     <% @short_links.each do |short_link| %>
       <tr>
-        <td><%= short_link.slug %></td>
         <td><%= short_link.visited %></td>
         <td><%= short_link.destination %></td>
         <td><%= link_to 'Show', "/#{short_link.slug}" %></td>
