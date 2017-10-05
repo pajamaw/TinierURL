@@ -62,6 +62,7 @@ nav.sticky.navbar-custom.navbar-fixed-top#nav {
       }
     }
   }
+  div.alert-danger.text-center,
   div.alert-info.text-center {
     width: 60%;
     margin: 0 auto;
@@ -69,7 +70,13 @@ nav.sticky.navbar-custom.navbar-fixed-top#nav {
     border: 2px solid grey;
   }
 }
-
+div.alert-danger.text-center,
+div.alert-info.text-center {
+  width: 60%;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 2px solid grey;
+}
 div.table-overflow {
   margin: 5% auto;
   max-height: 50vh;

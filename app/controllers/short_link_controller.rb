@@ -21,7 +21,7 @@ class ShortLinkController < ApplicationController
       if @short_link.save
         format.html { redirect_to root_path, notice: "#{request.original_url.slice(0..-3) + @short_link.slug}"}
       else
-        format.html { redirect_to root }
+        format.html { redirect_to root_path, notice: "#{@short_link.errors[:destination][0]}" }
       end
     end
   end
