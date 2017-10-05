@@ -30,7 +30,11 @@
               <td><%= short_link.visited %></td>
               <td><a href="http://<%=short_link.destination%>"><%= short_link.destination %></a></td>
               <% request.path.length == 2 ? len = request.path.length + 1 : len= request.path.length%>
+              <% if short_link.custom_slug %>
+              <td><a href="/a/<%=short_link.slug%>"><%= request.original_url.slice(0..-len) + 'a/' + short_link.slug %></a></td>
+              <%else%>
               <td><a href="/<%=short_link.slug%>"><%= request.original_url.slice(0..-len) + short_link.slug %></a></td>
+              <%end%>
             </tr>
           <% end %>
         </tbody>
