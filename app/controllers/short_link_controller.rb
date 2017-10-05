@@ -5,6 +5,7 @@ class ShortLinkController < ApplicationController
 
   def new
     @short_link = ShortLink.new
+    @count = ShortLink.count
   end
 
   def show

@@ -1,6 +1,6 @@
 <h1 class="text-center">Life is hard enough without having to remember a long url...</h1>
 <h4 class="text-center">With our proprietary* algorithm the web is under your control!</h4>
-
+<h5 class="text-center"><%= @count %> links minimized</h5>
 <%= render 'form', short_link: @short_link %>
 
 <% if notice && notice.include?("Must") %>
