@@ -1,6 +1,13 @@
 class ShortLinkController < ApplicationController
   def index
-    @short_links = ShortLink.take(100)
+    # secret feature to see the top x number of sites
+    if params[:number] && params[:number].to_i < ShortLink.count
+      @num = params[:number].to_i
+      @short_links = ShortLink.take(@num)
+    else
+      @num = 100
+      @short_links = ShortLink.take(@num)
+    end
   end
 
   def new
@@ -10,7 +17,6 @@ class ShortLinkController < ApplicationController
 
   def show
     if !@short_link = ShortLink.find_by(slug: params[:slug])
-
       redirect_to root_path, notice: "Path not found" and return
     end
     @short_link.visited += 1
@@ -28,12 +34,15 @@ class ShortLinkController < ApplicationController
   end
 
   def create
+    # find or create normal
     if params[:short_link][:slug] == ""
       @short_link = ShortLink.find_by(destination: params[:short_link][:destination]) || ShortLink.create(short_link_params)
     else
+      # create custom
       @short_link = ShortLink.create(short_link_params)
     end
     respond_to do |format|
+
       if @short_link.save
         if params[:short_link][:slug] != ""
           #provide with a different slug if they want a unique path
@@ -48,9 +57,7 @@ class ShortLinkController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def short_link_params
       params.require(:short_link).permit(:destination, :slug)
     end

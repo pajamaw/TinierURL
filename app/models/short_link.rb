@@ -4,9 +4,10 @@ class ShortLink < ApplicationRecord
 
   validates :destination, presence: true
   validate :valid_url
-  @@count = 0
   ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!."
   BASE = ALPHABET_MAP.length
+  @@count = 0
+
   # base 66
   before_create do
     self.destination = self.destination.sub(/https?\:(\\\\|\/\/)(www.)?/,'')
@@ -28,7 +29,6 @@ class ShortLink < ApplicationRecord
   def self.count=(num)
     @@count =num
   end
-
 
   def valid_url
     begin
