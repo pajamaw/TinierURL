@@ -1,10 +1,12 @@
 class ShortLinkController < ApplicationController
   def index
     @short_links = ShortLink.take(100)
-    # @short_links.map{|sl| a = {destination: sl.destination, slug: sl.slug, visited: sl.visited}}
-    @short_link = ShortLink.new
   end
 
+  def new
+    @short_link = ShortLink.new
+  end
+  
   def show
     if !@short_link = ShortLink.find_by(slug: params[:slug])
 

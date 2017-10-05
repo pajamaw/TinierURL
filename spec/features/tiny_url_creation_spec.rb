@@ -2,7 +2,7 @@ RSpec.feature "tiny url creation", :type => :feature do
   scenario "User creates a tiny url" do
     visit "/"
 
-    fill_in "Destination", :with => "www.miniwebtool.com/random-name-picker/"
+    fill_in "short_link[slug]", :with => "www.miniwebtool.com/random-name-picker/"
     click_button "Create Short link"
 
     expect(page).to have_css("#notice")
@@ -11,9 +11,9 @@ RSpec.feature "tiny url creation", :type => :feature do
     visit "/"
     # first time time
     s = ShortLink.create(destination: "www.miniwebtool.com/random-name-picker/", visited: 10004)
-    fill_in "Destination", :with => "www.miniwebtool.com/random-name-picker/"
+    fill_in "short_link[slug]", :with => "www.miniwebtool.com/random-name-picker/"
     click_button "Create Short link"
-
+    visit '/i/'
     expect(page).to have_text("miniwebtool", :count => 1)
   end
   scenario "User gets redirected for an invalid slug" do

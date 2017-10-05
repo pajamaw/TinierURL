@@ -1,18 +1,4 @@
-    <h1 class="text-center">Life is hard enough without having to remember a long url...</h1>
-    <h3 class="text-center">With our proprietary* algorithm the web is under your control!</h3>
-    <%= render 'form', short_link: @short_link %>
 
-    <% if notice && notice.include?("Must") %>
-      <div class="alert-danger text-center border">
-        <h4 class="alert-heading">Link not created!</h4>
-        <p id="notice"><a href="<%=notice%>"class="alert-link"><%= notice %> </a></p>
-      </div>
-    <%elsif notice %>
-      <div class="alert-info text-center border">
-        <h4 class="alert-heading">Website Successfully Tinified!</h4>
-        <p id="notice"><a href="<%=notice%>"class="alert-link"><%= notice %> </a></p>
-      </div>
-    <%end%>
       <table class="table table-inverse table-bordered">
         <thead>
           <tr>
@@ -47,4 +33,3 @@
         </tbody>
       </table>
     <br>
-    <sm class="text-center">*Not proprietary</sm>

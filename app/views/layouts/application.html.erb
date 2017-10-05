@@ -13,8 +13,30 @@
     </div>
     <nav id="nav" class="navbar navbar-default navbar-custom navbar-fixed-top sticky">
       <div class="navbar-header page-scroll">
-        <a class="navbar-brand page-scroll" href="#page-top">Apoco</a>
+        <a class="navbar-brand page-scroll" href="/">Apoco</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#dropdown-items">
+          <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
+        </button>
+        <ul class="hidden-list">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Minimize!<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/i/">Top 100 Frequented Links</a>
+          </li>
+        </ul>
       </div>
+      <div class="collapse navbar-collapse" id="dropdown-items">
+        <ul class="nav navbar-nav navbar-right mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Minimize!<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/i/">Top 100 Frequented Links</a>
+          </li>
+        </ul>
+      </div>
+    </div>
     </nav>
     <%= yield %>
   </body>

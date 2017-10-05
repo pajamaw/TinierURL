@@ -17,8 +17,8 @@
     <%= form.text_field :destination, id: :short_link_destination, class: 'form-control mb-2 mr-sm-2 mb-sm-0', required: true, placeholder: "www.example.com"%>
   </div>
   <div class="field p-3">
-    <%= form.label "If you'd like a custom path to the link above", class: "text-center" %>
-    <%= form.text_field :slug, id: :short_link_slug, class: 'form-control mb-2 mr-sm-2 mb-sm-0', value: "", placeholder: "Custom Slug here!"%>
+    <%= form.label "Custom path to your link", class: "text-center" %>
+    <%= form.text_field :slug, id: :short_link_slug, class: 'form-control mb-2 mr-sm-2 mb-sm-0', value: "", placeholder: "(optional)"%>
   </div>
   <div class="actions p-3">
     <%= form.submit(:class => 'btn btn-primary')%>

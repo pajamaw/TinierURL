@@ -1,5 +1,6 @@
 $enable-flex: true;
 @import "bootstrap";
+@import "font-awesome.css";
 
 body {
   font-family: montserrat, arial, verdana;
@@ -20,8 +21,65 @@ nav.sticky {
   position: -webkit-sticky;
   position: sticky;
 }
+a {
+  color: white;
+}
 a.navbar-brand {
   color: white;
+  margin-left: 2%;
+}
+nav.navbar-custom {
+  background-color: #5c26b4;
+  border-color: #4e2099;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#7438d5), to(#5c26b4));
+  background-image: -webkit-linear-gradient(top, #7438d5, 0%, #5c26b4, 100%);
+  background-image: -moz-linear-gradient(top, #7438d5 0%, #5c26b4 100%);
+  background-image: linear-gradient(to bottom, #7438d5 0%, #5c26b4 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff7438d5', endColorstr='#ff5c26b4', GradientType=0);
+}
+.navbar-custom .navbar-collapse {
+  border-color: #5c26b4;
+  text-align: right;
+  margin-right: 2%;
+}
+ul {
+  margin-top:2%;
+  border-top: 1px #5c26b4 solid;
+}
+.navbar-header.page-scroll {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+button.navbar-toggle,
+button.navbar-toggle:focus  {
+  border-radius: 5px;
+  outline: 0;
+  margin-right: 2%;
+}
+.navbar-custom .navbar-toggle,
+.navbar-custom .navbar-toggle:focus {
+  background-color: #5c26b4;
+  border-color: #5c26b4;
+  font-family: Arial, sans-serif;
+  color: white;
+  font-size: 1em;
+}
+.navbar-custom .navbar-toggle:hover {
+  background-color: white;
+  border-top: 1px #e7e7e7 solid;
+  color: #5c26b4;
+}
+.navbar-custom .nav li {
+  padding: 1%;
+  a, a:hover{
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    color: white;
+    width:100%;
+    text-decoration: none;
+  }
 }
 nav.sticky.navbar-custom.navbar-fixed-top#nav {
   background-color: #5c26b4;
@@ -33,9 +91,47 @@ nav.sticky.navbar-custom.navbar-fixed-top#nav {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff7438d5', endColorstr='#ff5c26b4', GradientType=0);
 }
+.navbar-custom {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: none;
+  padding: 0.5em 0em;
+  -webkit-transition: padding 0.3s;
+  -moz-transition: padding 0.3s;
+  transition: padding 0.3s;
+}
+.navbar-custom .navbar-brand {
+  font-size: 2em;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.navbar-custom .nav li:hover,
+.navbar-custom .nav li:focus {
+  background: #222222;
+  color: white;
+}
+.navbar-custom .navbar-nav > .active > a {
+  border-radius: 10%;
+}
+.navbar-custom {
+  background-color: #5c26b4;
+  border-color: #4e2099;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#7438d5), to(#5c26b4));
+  background-image: -webkit-linear-gradient(top, #7438d5, 0%, #5c26b4, 100%);
+  background-image: -moz-linear-gradient(top, #7438d5 0%, #5c26b4 100%);
+  background-image: linear-gradient(to bottom, #7438d5 0%, #5c26b4 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff7438d5', endColorstr='#ff5c26b4', GradientType=0);
+}
+.navbar-custom .navbar-brand {
+  font-size: 1.5em;
+}
+ul.hidden-list {
+  display: none;
+}
 @media (min-width: 768px) {
   nav.navbar-custom.navbar-fixed-top {
-    border-color: transparent;
     background-color: #5c26b4;
     background-image: -webkit-gradient(linear, left 0%, left 100%, from(#7438d5), to(#5c26b4));
     background-image: linear-gradient(to bottom, #7438d5 0%, #5c26b4 100%);
@@ -44,20 +140,34 @@ nav.sticky.navbar-custom.navbar-fixed-top#nav {
     -moz-transition: padding 0.3s;
     transition: padding 0.3s;
   }
-  .navbar-custom .navbar-brand {
-    font-size: 2em;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
+  #nav > div.navbar-header.page-scroll > button {
+  display: none;
+  }
+  ul.hidden-list {
+    display: inherit;
+    list-style-type: none;
+    border-top: none;
+    margin: 0;
+    width: 30%;
+    color: white;
+    li  {
+      display:inline;
+      a {
+        color: white;
+      }
+    }
+    li:hover, li:focus {
+      background: #222222;
+      color: white;
+      border-radius:5px;
+    }
+  }
+  div.navbar-collapse {
+    display:none;
   }
   h1 {
     text-align: center;
     margin: 5% 0;
-  }
-  div.table-overflow {
-    margin: 5% auto;
-    max-height: 50vh;
-    overflow-y: auto;
   }
   table.table.table-striped {
     width: 75%;
@@ -76,6 +186,9 @@ nav.sticky.navbar-custom.navbar-fixed-top#nav {
     border-radius: 10px;
     border: 2px solid grey;
   }
+}
+form {
+  margin-top: 5%;
 }
 div.alert-danger.text-center,
 div.alert-info.text-center {

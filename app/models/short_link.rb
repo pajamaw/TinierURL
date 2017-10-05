@@ -9,7 +9,7 @@ class ShortLink < ApplicationRecord
   # base 66
   before_create do
     self.destination = self.destination.sub(/https?\:(\\\\|\/\/)(www.)?/,'')
-    self.slug == "" ? self.custom_slug = false : self.custom_slug = true
+    self.slug == "" || self.slug == nil ? self.custom_slug = false : self.custom_slug = true
   end
 
   after_create do

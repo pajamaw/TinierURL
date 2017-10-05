@@ -9,7 +9,8 @@ RSpec.describe ShortLinkController do
   end
   describe "get show" do
     it "redirects to the destination page" do
-      @short_link = ShortLink.first
+      @short_link = ShortLink.all[4]
+      puts "#{@short_link.slug}"
       get :show, :params => {slug: @short_link.slug}
       # have to hack through due to the
       expect(response.headers["Location"]).to eq("http://#{@short_link.destination}")
