@@ -25,14 +25,14 @@ class ShortLinkController < ApplicationController
   end
 
   def create
-    if params[:slug]
-      @short_link = ShortLink.find_by(short_link_params) || ShortLink.create(short_link_params)
+    if params[:short_link][:slug] == ""
+      @short_link = ShortLink.find_by(destination: params[:short_link][:destination]) || ShortLink.create(short_link_params)
     else
       @short_link = ShortLink.create(short_link_params)
     end
     respond_to do |format|
       if @short_link.save
-        if @short_link.custom_slug
+        if params[:short_link][:slug] != ""
           #provide with a different slug if they want a unique path
           format.html { redirect_to root_path, notice: "#{request.original_url.slice(0..-3)}a/#{@short_link.slug}"}
         else
