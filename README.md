@@ -16,7 +16,14 @@
   - run `rails db:seed` to then run the scraper to seed teh database
   - from there you can run `rails s` to run it locally or test the site with `rspec`
 
-
+## Architecture Decisions
+  - Rails 5, Bootstrap 4, MySql2, Vanilla js, deployed to heroku
+  - Had attempted to use Cassandra initially thinking that the NoSQL database would be faster here due to just requiring a slug and destination i.e. a perfect key value pair
+    - but due to my novelty in the area I ran into some issues
+     - realized that not only would that be tough to implement in terms of maintaining an individual integer to use as an id outside of the model
+     - and if i weren't to use an id outside of the model the idea of using nosql didn't really make sense to me
+     - especially if i were to have to order it in a pattern to allow for quick takes of the top 100 visited sites
+        - also the tombstone thing seemed a bit precarious with the constant writes that the url's would do 
 
 # Overview
   - Shortest possible lengths - we'll convert the id's of the links into a custom base 66 conversion, that will slowly increment the lenght of the url's
@@ -27,9 +34,12 @@
     - so rails actually caches the results of database calls
     - issue is is that the cache is deleted upon a create or an update - so after another's created there's really no point
   - Add some bootstrap to make it a little prettier
-  - maybe add a little javascript to check if valid websites - done with ruby
+  - maybe add a little javascript to check if valid websites or with ruby
   - let's add a feature where you can create custom ones as well
     - in order to make that work i'll need another attribute so that I can then path that correctly
+  - I can also add some querying and searching to the table with some javascript
+
+## Questions I still have
 
 
 ### Rough roadmap

@@ -34,7 +34,8 @@ function search(){
     }
   }
 };
-
+// can't use es6 here unfortunately
+// functions to have a custom searcher through the rows
 function check_filter(node_array, search_filter){
   if (!node_array){
     return false;

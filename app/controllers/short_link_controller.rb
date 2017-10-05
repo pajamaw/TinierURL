@@ -4,6 +4,7 @@ class ShortLinkController < ApplicationController
     if params[:number] && params[:number].to_i < ShortLink.count
       @num = params[:number].to_i
       @short_links = ShortLink.take(@num)
+      # use take as i've setup the table to be sorted by visited
     else
       @num = 100
       @short_links = ShortLink.take(@num)
@@ -13,6 +14,7 @@ class ShortLinkController < ApplicationController
   def new
     @short_link = ShortLink.new
     @count = ShortLink.count
+    # hacky at the moment
   end
 
   def show
