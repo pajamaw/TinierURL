@@ -29,7 +29,8 @@
               <td><%= i+1 %></td>
               <td><%= short_link.visited %></td>
               <td><a href="http://<%=short_link.destination%>"><%= short_link.destination %></a></td>
-              <td><a href="/<%=short_link.slug%>"><%= request.original_url.slice(0..-3) + short_link.slug %></a></td>
+              <% request.path.length == 2 ? len = request.path.length + 1 : len= request.path.length%>
+              <td><a href="/<%=short_link.slug%>"><%= request.original_url.slice(0..-len) + short_link.slug %></a></td>
             </tr>
           <% end %>
         </tbody>
