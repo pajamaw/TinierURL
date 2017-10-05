@@ -1,4 +1,4 @@
-    <h1 class="text-center">Tinify-ing Everything</h1>
+    <h1 class="text-center">Tinify It All</h1>
     <h3></h3>
     <%= render 'form', short_link: @short_link %>
 
@@ -21,10 +21,17 @@
         </thead>
         <thead>
           <tr>
+            <th colspan="4">
+              <input type="text" id="search_function" class="form-control" onkeyup="search()" placeholder="Search for your favorite site.."/>
+            </th>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
             <th>Ranking</th>
             <th># of Visitors</th>
             <th>Destination</th>
-            <th>TinierURL</th>
+            <th>ApocoUrl</th>
           </tr>
         </thead>
 

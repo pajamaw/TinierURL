@@ -16,3 +16,30 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+const search = () => {
+  // Declare variables
+  let input, search_filter, table, tr, td_array, i;
+  input = document.querySelector("#search_function");
+  search_filter = input.value.toUpperCase();
+  table = document.querySelector("table");
+  tr = table.querySelectorAll("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 3; i < tr.length; i++) {
+    td_array = tr[i].querySelectorAll("td")
+    if (check_filter(td_array, search_filter)) {
+      tr[i].style.display = "";
+    } else {
+      tr[i].style.display = "none";
+    }
+  }
+}
+
+const check_filter = (node_array, search_filter) => {
+  if (!node_array){
+    return false;
+  }
+  let str = '';
+  node_array.forEach((x) => str += x.innerHTML.toUpperCase())
+  return str.indexOf(search_filter) > -1
+}
