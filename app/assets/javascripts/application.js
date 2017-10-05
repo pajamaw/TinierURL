@@ -14,7 +14,6 @@
 //= require popper
 //= require bootstrap
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 function search(){
   // Declare variables
