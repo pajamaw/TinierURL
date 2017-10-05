@@ -18,7 +18,7 @@
 //= require_tree .
 function search(){
   // Declare variables
-  let input, search_filter, table, tr, td_array, i;
+  var input, search_filter, table, tr, td_array, i;
   input = document.querySelector("#search_function");
   search_filter = input.value.toUpperCase();
   table = document.querySelector("table");
