@@ -1,12 +1,19 @@
 $enable-flex: true;
 @import "bootstrap";
-body {}
+
+body {
+  font-family: montserrat, arial, verdana;
+  color: white;
+  height: 100%;
+  background:
+    url('http://d23eklgo3w7jlt.cloudfront.net/assets/public_site/hero-bg-10fb007d4c1f1e563a91342075a62e379cf40131a6a1b4a87b8d70b6e4ab9e18.jpg')
+}
 .purple {
   color: #5c26b4;
 }
-h1 {
+h1.text-center {
   text-align: center;
-  margin: 7% 0 5%;
+  margin: 7% auto 2%;
 }
 nav.sticky {
   top: 0px;
