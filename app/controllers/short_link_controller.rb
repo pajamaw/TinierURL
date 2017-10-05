@@ -41,7 +41,7 @@ class ShortLinkController < ApplicationController
       @short_link = ShortLink.find_by(destination: params[:short_link][:destination]) || ShortLink.create(short_link_params)
     else
       # create custom
-      @short_link = ShortLink.create(short_link_params)
+      @short_link = ShortLink.find_by(short_link_params) || ShortLink.create(short_link_params)
     end
     respond_to do |format|
 
