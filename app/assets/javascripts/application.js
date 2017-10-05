@@ -16,7 +16,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-const search = () => {
+function search(){
   // Declare variables
   let input, search_filter, table, tr, td_array, i;
   input = document.querySelector("#search_function");
@@ -33,13 +33,15 @@ const search = () => {
       tr[i].style.display = "none";
     }
   }
-}
+};
 
-const check_filter = (node_array, search_filter) => {
+function check_filter(node_array, search_filter){
   if (!node_array){
     return false;
   }
   let str = '';
-  node_array.forEach((x) => str += x.innerHTML.toUpperCase())
+  node_array.forEach(function(x){
+    return str += x.innerHTML.toUpperCase()
+  });
   return str.indexOf(search_filter) > -1
 }
