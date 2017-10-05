@@ -6,7 +6,7 @@ class ShortLinkController < ApplicationController
   def new
     @short_link = ShortLink.new
   end
-  
+
   def show
     if !@short_link = ShortLink.find_by(slug: params[:slug])
 

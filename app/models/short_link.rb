@@ -4,6 +4,7 @@ class ShortLink < ApplicationRecord
 
   validates :destination, presence: true
   validate :valid_url
+  @@count = 0
   ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!."
   BASE = ALPHABET_MAP.length
   # base 66
@@ -17,8 +18,13 @@ class ShortLink < ApplicationRecord
       self.slug = self.base_conversion_to_slug
       self.save
     end
+    @@count +=1
   end
 
+  def self.count
+    @@count
+  end
+  
   def valid_url
     begin
       uri = URI.parse(destination)
