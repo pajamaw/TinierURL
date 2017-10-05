@@ -39,7 +39,7 @@ function check_filter(node_array, search_filter){
   if (!node_array){
     return false;
   }
-  let str = '';
+  var str = '';
   node_array.forEach(function(x){
     return str += x.innerHTML.toUpperCase()
   });
