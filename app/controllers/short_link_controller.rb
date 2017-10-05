@@ -15,22 +15,32 @@ class ShortLinkController < ApplicationController
     redirect_to "http://#{@short_link.destination}", status: 302
   end
 
+  def custom_show
+    if !@short_link = ShortLink.find_by(slug: params[:custom_slug], custom_slug: true)
+      redirect_to root_path, notice: "Path not found" and return
+    end
+    @short_link.visited += 1
+    @short_link.save
+    redirect_to "http://#{@short_link.destination}", status: 302
+  end
+
   def create
-    @short_link = ShortLink.find_by(short_link_params) || ShortLink.create(short_link_params)
+    if params[:slug]
+      @short_link = ShortLink.find_by(short_link_params) || ShortLink.create(short_link_params)
+    else
+      @short_link = ShortLink.create(short_link_params)
+    end
     respond_to do |format|
       if @short_link.save
-        format.html { redirect_to root_path, notice: "#{request.original_url.slice(0..-3) + @short_link.slug}"}
+        if @short_link.custom_slug
+          #provide with a different slug if they want a unique path
+          format.html { redirect_to root_path, notice: "#{request.original_url.slice(0..-3)}a/#{@short_link.slug}"}
+        else
+          format.html { redirect_to root_path, notice: "#{request.original_url.slice(0..-3) + @short_link.slug}"}
+        end
       else
         format.html { redirect_to root_path, notice: "#{@short_link.errors[:destination][0]}" }
       end
-    end
-  end
-
-  def destroy
-    @short_link.destroy
-    respond_to do |format|
-      format.html { redirect_to short_links_url, notice: 'Short link was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -39,7 +49,7 @@ class ShortLinkController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def short_link_params
-      params.require(:short_link).permit(:destination)
+      params.require(:short_link).permit(:destination, :slug)
     end
 
 end

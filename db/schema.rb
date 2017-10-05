@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003235024) do
+ActiveRecord::Schema.define(version: 20171005012920) do
 
   create_table "short_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.text "slug"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20171003235024) do
     t.integer "visited", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "custom_slug", default: false
   end
 
 end

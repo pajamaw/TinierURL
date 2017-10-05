@@ -82,6 +82,17 @@ div.table-overflow {
   max-height: 50vh;
   overflow-y: auto;
 }
+.flex-col {
+  flex-direction: column;
+}
+.field {
+  width: 50%;
+  margin: 0 auto;
+}
+.actions {
+  margin: 0 auto;
+}
+
 table.table.table-striped {
   width: 80%;
   margin: 0% auto;

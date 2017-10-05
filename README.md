@@ -12,7 +12,8 @@
     - issue is is that the cache is deleted upon a create or an update - so after another's created there's really no point
   - Add some bootstrap to make it a little prettier
   - maybe add a little javascript to check if valid websites
-
+  - let's add a feature where you can create custom ones as well
+    - in order to make that work i'll need another attribute so that I can then path that correctly
 
 
 ### Rough roadmap

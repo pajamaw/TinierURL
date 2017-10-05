@@ -12,8 +12,12 @@ class ShortLink < ApplicationRecord
   end
 
   after_create do
-    self.slug = self.base_conversion_to_slug
-    self.save
+    if !self.slug
+      self.slug = self.base_conversion_to_slug
+      self.save
+    else
+      self.custom_slug = true
+    end
   end
 
   def valid_url
