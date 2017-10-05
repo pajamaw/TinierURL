@@ -1,6 +1,22 @@
 # TinierUrl
 ## To run
   - go to https://apoco.herokuapp.com
+  - input a link with an optional customm path below - receive your new link!
+  - now from any point you can type in the given url into the server and you will be redirected to the original page
+
+  - also check out our top 100 most visited links page!
+
+## To run locally
+  - fork (or just clone) https://github.com/pajamaw/TinierURL
+    - with `git clone https://github.com/pajamaw/TinierURL`
+  - once installed run `bundle install` to ensure that you have all the dependencies
+  - then run `rails db:create` to create the mysql database - if you don't have mysql installed go ahead to https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html and follow the directions
+
+  - then run `rails db:migrate` to create tables
+  - run `rails db:seed` to then run the scraper to seed teh database
+  - from there you can run `rails s` to run it locally or test the site with `rspec`
+
+
 
 # Overview
   - Shortest possible lengths - we'll convert the id's of the links into a custom base 66 conversion, that will slowly increment the lenght of the url's
@@ -11,7 +27,7 @@
     - so rails actually caches the results of database calls
     - issue is is that the cache is deleted upon a create or an update - so after another's created there's really no point
   - Add some bootstrap to make it a little prettier
-  - maybe add a little javascript to check if valid websites
+  - maybe add a little javascript to check if valid websites - done with ruby
   - let's add a feature where you can create custom ones as well
     - in order to make that work i'll need another attribute so that I can then path that correctly
 

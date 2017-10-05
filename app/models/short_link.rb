@@ -18,13 +18,18 @@ class ShortLink < ApplicationRecord
       self.slug = self.base_conversion_to_slug
       self.save
     end
-    @@count +=1
+    @@count = self.id
   end
 
   def self.count
     @@count
   end
-  
+
+  def self.count=(num)
+    @@count =num
+  end
+
+
   def valid_url
     begin
       uri = URI.parse(destination)
