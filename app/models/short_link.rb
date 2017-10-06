@@ -9,7 +9,8 @@ class ShortLink < ApplicationRecord
   # validating that the url exists
   validate :valid_url
   # validating that the url doesn't have any spaces
-  ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!"
+  # the internet says that periods are okay while heroku doesn't like it
+  ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!."
   BASE = ALPHABET_MAP.length
 
   # current characters that I'm using may possibly remove a couple due to similarity
