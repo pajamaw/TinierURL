@@ -4,12 +4,12 @@ class ShortLink < ApplicationRecord
   # here I've got the database sorting itself by number visite
   # thereby not only making it faster for the top 100 -> but also
   # I think this would make it faster for the sites that are used more often
-  
+
   validates :destination, presence: true
   # validating that the url exists
   validate :valid_url
   # validating that the url doesn't have any spaces
-  ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!."
+  ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!"
   BASE = ALPHABET_MAP.length
 
   # current characters that I'm using may possibly remove a couple due to similarity
