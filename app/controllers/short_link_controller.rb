@@ -4,9 +4,11 @@ class ShortLinkController < ApplicationController
     if params[:number] && params[:number].to_i < ShortLink.count
       @num = params[:number].to_i
       @short_links = ShortLink.take(@num)
+      # faster if i do this ShortLink.where('select * from short_link order by visited desc limit ?', @num)
       # use take as i've setup the table to be sorted by visited
     else
       @num = 100
+      # faster if i do this ShortLink.where('select * from short_link order by visited desc limit ?', @num)
       @short_links = ShortLink.take(@num)
     end
   end

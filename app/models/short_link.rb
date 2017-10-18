@@ -11,8 +11,9 @@ class ShortLink < ApplicationRecord
   # validating that the url doesn't have any spaces
   # the internet says that periods are okay while heroku doesn't like it
   ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!."
+  # remove the periods
   BASE = ALPHABET_MAP.length
-
+  
   # current characters that I'm using may possibly remove a couple due to similarity
   @@count = 0
 
@@ -30,6 +31,7 @@ class ShortLink < ApplicationRecord
       self.save
     end
     @@count = self.id
+    #@@count > 0 ? @@count+=1 : @@count = ShortLink.all.size
   end
 
   def self.count
